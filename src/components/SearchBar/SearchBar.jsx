@@ -1,10 +1,12 @@
+import {connect, useSelector, useDispatch } from 'react-redux';
 import './SearchBar.css';
-
+import {searchMovies} from '../../store/actions';
 export default function SearchBar(props) {
-
+    const dispatch = useDispatch();
     function handleSubmit(e) {
         e.preventDefault();
         const searchEntry = e.target.searchInput.value;
+        dispatch(searchMovies(searchEntry))
         props.parentCallback(searchEntry);
     }
 
