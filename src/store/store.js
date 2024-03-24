@@ -16,6 +16,7 @@ export default createStore(
 import { createStore, applyMiddleware } from 'redux';
 import { configureStore } from '@reduxjs/toolkit'
 import moviesReducer from './reducers/moviesReducer';
+import selectMovieReducer from './reducers/selectMovieReducer'
 import logger from 'redux-logger';
 import {thunk} from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -23,7 +24,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 export default configureStore({
   reducer: {
-    movies: moviesReducer
+    movies: moviesReducer,
+    selectedMovie: selectMovieReducer
   },
   middleware: (getDefaultMiddleware) => {return getDefaultMiddleware().concat(logger).concat(thunk)}
 });

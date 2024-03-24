@@ -31,3 +31,17 @@
     text-align: center;
     padding-top: 50px;
   }
+
+  .back-button {
+    padding: 10px 20px;
+    border: none;
+    background: linear-gradient(40deg, #ea00ff, #ea00ff, #03d5ff, #03d5ff);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .back-container {
+    display: flex;
+    justify-content: center;
+  }

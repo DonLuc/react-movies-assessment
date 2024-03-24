@@ -21,6 +21,20 @@ export const fetchMoviesFailure = error => {
     }
 }
 
+export const selectMovie = movie => {
+    return {
+        type: ACTION_TYPES.SELECT_MOVIE,
+        payload: movie
+    }
+}
+
+export const selectMovieReset = movie => {
+    return {
+        type: ACTION_TYPES.SELECT_MOVIE_RESET
+    }
+}
+
+
 const transformData = (movies = []) => {
     let transformedMovies = [];
     if (movies.length > 0) {
