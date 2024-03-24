@@ -1,16 +1,19 @@
 import React, { useState, useRef, useEffect } from 'react';
+import {connect, useSelector, useDispatch } from 'react-redux';
 import Movie from './Movie';
 import InfiniteScroll from "react-infinite-scroller";
 import {MOVIES} from '../../movies';
+import  fetchMovies  from '../../store/actions/moviesAction'
 
-
-export default function MovieList(props) {
+function MovieList(props) {
     
     const [movies, setMovies] = useState(MOVIES);
     const itemsPerPage = 10;
     const [hasMore, setHasMore] = useState(true);
     const [records, setrecords] = useState(itemsPerPage);
 
+    const moviesSlice = useSelector(state => state.movies);
+    const dispatch = useDispatch();
     const searchMovies = (searchKeyword) => {
         if (searchKeyword === '') {
             setMovies(MOVIES);
@@ -52,6 +55,11 @@ export default function MovieList(props) {
       }
     };
     return (
+      <>
+        <div>
+          {moviesSlice.movies.length}
+          <button onClick={() => dispatch(fetchMovies()) }>MOVIES</button>
+        </div>
         <InfiniteScroll
           pageStart={0}
           loadMore={loadMore}
@@ -60,5 +68,11 @@ export default function MovieList(props) {
           useWindow={false}>
           {showItems(movies)}
         </InfiniteScroll>
+      
+      
+      </>
     );
+
   }
+
+  export default MovieList;
