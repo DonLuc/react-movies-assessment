@@ -21,13 +21,13 @@ function MovieList(props) {
     }, []);
 
     const showMovieListItems = (movies) => {
-      var movies = [];
+      var items = [];
       for (var i = 0; i < moviesSlice.movies.length; i++) {
-        movies.push(
+        items.push(
           <Movie key={movies[i].title} movie={movies[i]} />
         );
       }
-      return movies;
+      return items;
     };
     
     /**Used in an InfiniteLoop to load more records */
