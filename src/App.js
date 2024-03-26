@@ -4,35 +4,21 @@ import Header from './components/Header/Header';
 import SearchBar from './components/SearchBar/SearchBar';
 import {MOVIES} from './movies';
 import MovieList from './components/Movie/MovieList';
+import { useSelector } from 'react-redux';
 
 function App() {
-  let searchedMovies = [];
-  const [searchEntry, setsearchEntry] = useState("");
-  const [moviesData, setMoviesData] = useState(MOVIES);
-  function handleCallback(search) {
-    setsearchEntry(search);
-  };
-
-  /*
-  const didMountRef = useRef(false)
-	useEffect(() => {
-		if (didMountRef.current) {
-          if (searchEntry !== "") {
-            //searchedMovies = MOVIES.filter(movie => movie.title.toLowerCase().includes(searchEntry.toLowerCase()));
-            //setMoviesData(searchedMovies);
-          } else {
-            //searchedMovies = MOVIES;
-          }
-          didMountRef.current = true;
-		} else didMountRef.current = true;
-	});
-  */
-
+  const selectedMovieSlice = useSelector(state => state.selectedMovie);
+  const moviesSlice = useSelector(state => state.movies);
+ 
   return (
     <div className="container">
       <Header />
-      <SearchBar parentCallback={handleCallback}/>
-        <MovieList searchEntry={searchEntry}/>
+      { (selectedMovieSlice.selectedMovie !== null || moviesSlice.movies.error !== '')  ? 
+        <></>
+        :
+        <SearchBar />
+    }
+        <MovieList />
     </div>
   );
 }

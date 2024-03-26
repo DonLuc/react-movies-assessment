@@ -5,11 +5,9 @@ import InfiniteScroll from "react-infinite-scroller";
 import {MOVIES} from '../../movies';
 import {fetchMovies} from '../../store/actions';
 import MovieDetails from './MovieDetails';
-
+import ErrorScreen from '../Shared/ErrorScreen';
 
 function MovieList(props) {
-    
-    const [movies, setMovies] = useState(MOVIES);
     const itemsPerPage = 10;
     const [hasMore, setHasMore] = useState(true);
     const [records, setrecords] = useState(itemsPerPage);
@@ -23,16 +21,16 @@ function MovieList(props) {
     }, []);
 
     const showMovieListItems = (movies) => {
-      console.log(JSON.stringify(movies))
-      var items = [];
+      var movies = [];
       for (var i = 0; i < moviesSlice.movies.length; i++) {
-        items.push(
+        movies.push(
           <Movie key={movies[i].title} movie={movies[i]} />
         );
       }
-      return items;
+      return movies;
     };
     
+    /**Used in an InfiniteLoop to load more records */
     const loadMore = () => {
       if (records === moviesSlice.movies.length) {
         setHasMore(false);
@@ -60,7 +58,6 @@ function MovieList(props) {
         }
       
       </>
-
       );
     }
 
@@ -68,14 +65,16 @@ function MovieList(props) {
       return (
         <MovieDetails></MovieDetails>
       )
-
     }
-
+ 
+    /**Conditionally render 3 sections */
     const renderSection = () => {
       if (selectedMovieSlice.selectedMovie !== null 
         ) {
-          console.log('DETAILS::: ' + selectedMovieSlice.selectedMovie);
         return renderMovieDetail();
+      } else if (moviesSlice.error) {
+        return <ErrorScreen message={moviesSlice.error}></ErrorScreen>
+
       }
       return renderMovieList();
     }

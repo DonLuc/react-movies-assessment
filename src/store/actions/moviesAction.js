@@ -61,7 +61,6 @@ export const fetchMovies = () => {
                 dispatch(fetchMoviesSuccess(movies));
             })
             .catch(error => {
-                console.log('ERROR')
                 const errorMsg = error.message;
                 dispatch(fetchMoviesFailure(errorMsg));
             });
@@ -77,7 +76,6 @@ export const searchMovies = keyword => {
                     dispatch(fetchMoviesSuccess(movies));
                 })
                 .catch(error => {
-                    console.log('ERROR')
                     const errorMsg = error.message;
                     dispatch(fetchMoviesFailure(errorMsg));
                 });

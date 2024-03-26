@@ -8,7 +8,6 @@ const MovieDetails = ({ movie }) => {
     const selectedMovieSlice = useSelector(state => state.selectedMovie);
     const dispatch = useDispatch();
     const onResetSelection = () => {
-        alert('TRRR')
         dispatch({type: ACTION_TYPES.SELECT_MOVIE_RESET, payload: null});        
     }
     return (
