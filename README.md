@@ -1,6 +1,24 @@
-# Getting Started with Create React App
+# React Movies Assessment
 
+Welcome to my React Assessment. 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+
+## Getting Started
+
+Follow these instructions to get a copy of the project up and running on your local machine.
+
+### Prerequisites
+
+Before you begin, ensure you have the following installed on your system:
+
+- Node.js and npm (Node Package Manager)
+- Git
+
+  ## Clone the project
+    ```bash
+   git clone https://github.com/your-username/react-project.git
+
 
 ## Available Scripts
 
